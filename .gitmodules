@@ -3,5 +3,5 @@
 	url = git@github.com:youngkin/hugo-theme-cleanwhite-rsy.git
 [submodule "public"]
 	path = public
-	url = https://github.com/toeb/toeb.github.io.git
+	url = git@github.com:toeb/toeb.github.io.git
 	branch = master
