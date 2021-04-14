@@ -10,7 +10,19 @@ paginate = 5000 #frontpage pagination
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
+  [markup.highlight]
+      anchorLineNos = false
+      codeFences = true
+      guessSyntax = false
+      hl_Lines = ""
+      lineAnchors = ""
+      lineNoStart = 1
+      lineNos = false
+      lineNumbersInTable = true
+      noClasses = true
+      style = "monokai"
+      tabWidth = 4
+      
 [params]
   header_image = "images/carbon.png"
   title = "Software Engineering"
@@ -42,3 +54,4 @@ paginate = 5000 #frontpage pagination
   github         = "https://github.com/toeb"  
   stackoverflow  = "https://stackoverflow.com/users/1229468/toeb"
   reddit         = "https://www.reddit.com/user/toebi"
+
