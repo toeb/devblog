@@ -1,11 +1,10 @@
 ---
 title: "Parallel Processes in CMake"
-date: 2016-08-30T23:24:46+02:00
+date: 2014-12-16
+description: ""
 draft: true
 ---
 
-Parallel Processes in CMake
-by thetoeb • 2014/12/16 • 0 Comments
 
 If you need to check out multiple large repositories or build and install large separate projects you might want to use parallel processes in CMake. Dividing your tasks to use multiple CMake and or other processes can speed up your build and configuration steps immensely.
 
@@ -18,10 +17,12 @@ The functions are part of my cmake enhancement suite – oocmake and can be foun
 Installation is very easy and described in the README.md
 
 Examples
+
 Of course example are the easiest to show what is possible therefore I provided two:
 
 This example starts a script into three separate cmake processes. The program ends when all scripts are done executing.
 
+```cmake
 # define a script which counts to 10 and then 
 # note that a fresh process means that cmake has not loaded oocmake
 set(script "
@@ -111,7 +112,15 @@ This example shows a slightly less useless case: Downloading multiple ‘large�
   foreach(path ${paths})
     assert(EXISTS "${path}")
   endforeach()
-Functions and Datatypes
+
+
+```
+
+
+
+## Functions and Datatypes
+
+```
 datatypes
 <process handle> ::= { state:<process state> , pid:<process id> } process handle is a runtime unique map which is used to address a process. The process handle may contain more properties than specified – only the specified ones are available on all systems – these properties contain values which are implementation specific.
 <process info> ::= { } a map containing verbose information on a proccess. only the specified fields are available on all platforms. More are available depending on the OS you use. You should not try to use these without examining their origin / validity.
@@ -149,3 +158,4 @@ the returns code tells you how you process finished and is often enough result i
 Caveats
 process starting is slow – it can take seconds (it takes 900ms on my machine). The task needs to be a very large one for it to compensate the overhead.
 parallel processes use platform specific functions – It might cause problems on less well tested OSs and some may not be supported. (currently only platforms with bash or powershell are supported ie Windows and Linux)
+```

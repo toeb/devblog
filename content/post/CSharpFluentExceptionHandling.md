@@ -3,6 +3,8 @@ title: "A Fluent Way of Exception Handling"
 description: "Strategies to handle exceptions"
 date: 2013-12-09
 draft: true
+tags:        ["C#", "Exceptions"]
+categories:  ["C#" ]
 ---
 
 

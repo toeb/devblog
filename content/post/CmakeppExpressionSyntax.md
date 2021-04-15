@@ -4,8 +4,8 @@ description: "Discussion of an Alternative Syntax for CMake"
 date:        2018-06-04
 author:      "toeb"
 image:       ""
-tags:        ["cmake"]
-categories:  ["cmake", "script", "compiler" ]
+tags:        ["cmake", "expression"]
+categories:  ["cmake" ]
 ---
 
 “CMake’s syntax is not sexy.” Is a statement that probably everyone can understand. It does not allow the developer rudimentary constructs which almost all other languages have. But because CMake’s language is astonishingly flexible I was able to create a lexer and parser and interpreter for a custom 100 % compatible syntax which (once “JIT transpiled”) is also fast. I call it cmakepp expressions or expr for short. I want to emphasize that all of this is written in 100% compatible cmake code and you can use it without the need to preprocess any cmake files or adding any dependencies (except cmakepp).

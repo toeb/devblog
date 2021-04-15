@@ -1,12 +1,11 @@
 ---
 title: "Objects and Maps in CMake"
-date: 2016-08-30T23:24:46+02:00
+description: ""
+date: 2014-02-16
 draft: true
 ---
 
 
-Objects and Maps in CMake
-by thetoeb • 2014/02/16 • 7 Comments
 
 Get it at https://github.com/toeb/oo-cmake and tell me if you like it
 
@@ -21,6 +20,8 @@ Even if you do not want to do inheritance in CMake you can use these functions f
 People familiar with JavaScript will be familiar with this approach to object orientation.
 
 Here is a simple example
+
+```cmake
 
 cmake_minimum_required(VERSION 2.8)
 # include standalone version of oo-cmake
@@ -95,3 +96,5 @@ obj_settype(ref type) # sets the type for ref
 obj_gettype(ref type) # gets the type for ref
 obj_getkeys(ref keys) # returns all defined properties for ref
 obj_getownkeys(ref keys) # returns all defined properties that ref owns
+
+```

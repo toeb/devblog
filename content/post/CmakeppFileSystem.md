@@ -4,8 +4,8 @@ description: "Discussion of an Alternative Syntax for CMake"
 date:        2014-11-27
 author:      "toeb"
 image:       ""
-tags:        ["cmake"]
-categories:  ["cmake", "cmake", "programming" ]
+tags:        ["cmake", "filesystem"]
+categories:  ["cmake" ]
 ---
 
 

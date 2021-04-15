@@ -1,11 +1,10 @@
 ---
 title: "Heterogeneous Package Search and Retrieval in CMake"
-date: 2016-08-30T23:24:46+02:00
+decriptions: ""
+date: 2015-02-04
 draft: true
 ---
 
-Heterogeneous Package Search and Retrieval in CMake
-by thetoeb • 2015/02/04 • 2 Comments
 
 Finding and Retrieving third party sources, tools and binaries is currently a hot subject for C++. There are quite a few solutions (biicode, cpm, hunter, …) Also there is github, bitbucket, source balls etc. Further there are many package managers for many different platforms which also can contain packages (apt-get, chocolatey, nuget, npm, pip, ….). So everything is very decentralized and heterogeneous.
 
@@ -24,6 +23,9 @@ cmakepp now contains package sources for github bitbucket web archives local arc
 These can be used to simply search and download packages.
 
 After all of this text I’m sure you want to see how to use it. So I’ll show you a simple Example:
+
+
+```cmake
 
 cmake_minimum_required(VERSION 2.8.12)
 ## CMakeLists.txt for a simple project 
@@ -65,22 +67,28 @@ int main()
   std::cout << m << std::endl;
 }
 ")
+
 add_executable(myexe "main.cpp")
+```
+
 After you write and configure this CMakeLists.txt you are able to work with you project as before. Of course the sample is overly simple – because I do not show you how this works with non-header-only libraries and installing and multiple targets,… But it is just to give you an idea of how things work.
 
 The only prerequisites are cmake >= 2.8.12 and a build system e.g. MSVC or GCC
 
 To get this to work copy paste the code into a new directory in a file called CMakeLists.txt then type:
 
+```
 > mkdir build
 > cd build
 build> cmake ..
 build> cmake --build .
 build> <code to run executable e.g. ./Debug/myexe.exe under windows>
 This might seem a bit of overkill – however when you install cmakepp you are not limited to using it in your CMakeLists.txt you can also invoke it through the commandline. Consider the following console log which work on your console of choice like bash powershell cmd.
+```
 
 The following lists all packages available which match the uri toeb
 
+```
 PS> cmakepp query_package toeb
 [
  "github:toeb/adolc",
@@ -119,8 +127,10 @@ PS> cmakepp query_package toeb
  "bitbucket:toeb/test_repo_hg",
  "bitbucket:toeb/test_repo_git"
 ]
-The following returns all available package information for a specific package uri.
+```
 
+The following returns all available package information for a specific package uri.
+```
 PS> cmakepp resolve_package toeb/cmakepp
 {
  "package_descriptor":{
@@ -227,4 +237,6 @@ PS> cmakepp resolve_package toeb/cmakepp
   "resolve":"package_source_resolve_github"
  }
 }
+```
+
 This concludes this simple blog post – It just scrapes at the edges of what you can do and if I have piqued your interest please visit the the project’s github package https://github.com/toeb/cmakepp were I try to document everything vigorously and also try to explain my reasoning for the choices I make in the README file. Please let me know if you have any suggestions or bugs or feature requests or if you want to help 🙂 This software is free and under the MIT license.
