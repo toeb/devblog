@@ -1,24 +1,27 @@
 ---
 title: "CMake and the Filesystem"
-date: 2016-08-30T23:24:46+02:00
-draft: true
+description: "Discussion of an Alternative Syntax for CMake"
+date:        2014-11-27
+author:      "toeb"
+image:       ""
+tags:        ["cmake"]
+categories:  ["cmake", "cmake", "programming" ]
 ---
 
-BUILD, CMAKE, PROGRAMMING
-CMake and the Filesystem
-by thetoeb • 2014/11/27 • 0 Comments
 
-Filesystem
+# Filesystem
+
 I have always been a bit confused when working with cmake’s file functions and the logic behind paths (sometimes they are found sometimes they are not…) For ease of use I reimplemented a own path managing system which behaves very similar to powershell and bash (see ss64.com) it is based around a global path stack and path qualification. All of my functions which work with paths use this system.
 
-How to get it.
+## How to get it.
 The filesystem extensions are part of oo-cmake a enhancement suite to cmake written in pure cmake. Either clone oo-cmake’s git repository or follow the instructions at cutil which includes oo-cmake.
 
 I prefer you use the second method as it installs aliases to run the icmake command which lets you test the functions interactively.
 
-Example
-To better show you what I mean I created the following example:
+## Example
 
+To better show you what I mean I created the following example:
+```cmake
 # as soon as you include `oo-cmake.cmake` the current directory is set to 
 # "${CMAKE_SOURCE_DIR}" which is the directory from which you script file 
 # is called in script mode (`cmake -P`) or the directory of the root 
@@ -65,7 +68,16 @@ rm(.)
 
 
 popd() # pwd is now ${CMAKE_SOURCE_DIR} again and stack is empty
-Functions and Datatypes
+
+```
+
+
+
+
+
+## Functions and Datatypes
+
+```cmake 
 <windows path> a windows path possibly with and possibly with drive name C:\Users\Tobi\README.md
 <relative path> a simple relative path ‘../dir2/./test.txt’
 <qualified path> a fully qualified path depending on OS it only contains forward slashes and is cmake’s get_filename_component(result "${input} REAL_PATH) returns. All symlinks are resolved. It is absolute
@@ -94,3 +106,6 @@ touch(<unqualified path> [--nocreate])-><qualified path> touches the specified f
 home_dir()-><qualified path> returns the users home directory
 home_path(<relative path>)-><qualified path> returns fully qualified path relative to the user’s home directory
 … (more functions are coming whenver they are needed)
+
+
+```

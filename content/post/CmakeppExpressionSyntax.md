@@ -1,19 +1,18 @@
 ---
 title:       "cmakepp: Expression Syntax"
-subtitle:    "subtlt"
-description: "descr"
+description: "Discussion of an Alternative Syntax for CMake"
 date:        2018-06-04
-author:      ""
+author:      "toeb"
 image:       ""
-tags:        ["tag1", "tag2"]
-categories:  ["Tech" ]
+tags:        ["cmake"]
+categories:  ["cmake", "script", "compiler" ]
 ---
 
 “CMake’s syntax is not sexy.” Is a statement that probably everyone can understand. It does not allow the developer rudimentary constructs which almost all other languages have. But because CMake’s language is astonishingly flexible I was able to create a lexer and parser and interpreter for a custom 100 % compatible syntax which (once “JIT transpiled”) is also fast. I call it cmakepp expressions or expr for short. I want to emphasize that all of this is written in 100% compatible cmake code and you can use it without the need to preprocess any cmake files or adding any dependencies (except cmakepp).
 
 You can get access to my project at https://github.com/toeb/cmakepp. I greatly appreciate new users, likes and feedback. If you want you can even help make cmakepp better by submitting issues or pull requests. The largest discussions to my posts is always on reddit.
 
-Example
+## Example
 The easiest way to introduce the new expr syntax and its usefulness is by example. So here it is (Note that these example are actually executed during the generation of this document using my cmake template engine (link) so the result displayed is actually computed).
 
 You can run these examples yourself – just look at the getting cmakepp section in cmakepp‘s documentation. (Which boils down to downloading a single file and including it)
@@ -181,8 +180,10 @@ var_5:
 ```
 
 ##Functions and Datatypes
+
 I provide the following functions for you to interact with expr.
 
+```cmake
 expr
 arguments_expression
 cmakepp_enable_expressions
@@ -373,14 +374,17 @@ For better or worse here is the language definition which is still a work in pro
 
 
 <expression> ::= <assign> | <value> 
+```
 
-Caveats
-Syntax
+## Caveats
+
+### Syntax
 The syntax is not implemented completely yet (missing return value token $). There are some conflicts in operation precedence (which can currently be solved with parenthesis). All Examples described here work however.
 
-Speed
+### Speed
 Compiling these expressions is slow: a simple expression compiles in hundreds of milliseconds. Complex expressions can take several seconds. However this is only when they are first encountered. afterwards the speed is fast even if the expressions are complex. Currently I cache the expressions everytime cmake starts. An example is when using arguments_expression(...) It takes up to 1000ms to compile
 
+```cmake
 my_other_test_function(
     [a,eval_math('3*5'),c],
     [d,e]...,
@@ -388,10 +392,13 @@ my_other_test_function(
     f,[g,h],
     var_4: "another value"
 )
+```
+
 however execution time is less than 10 ms
 
-Future Work
-Syntax
+## Future Work
+
+### Syntax
 I still need to implement correct math in the expressions which is a big minus in cmake (anyone who every had to work with negative values knows what I mean). Expressions like (-$a + 33) / -12 should be simple enough to get to work.
 
 The return token $ needs to work. currently I do not support it.
@@ -403,8 +410,9 @@ Range based get and set needs to be implemented.
 $a[1:2].b = [1,2]... 
 ## should result in 
 # let a = [{b:'a'},{b:'1'},{b:'2'},{b:'d'}]
-Speed
+
+### Speed
 I still need to cache expressions between cmake runs which will decrease the time needed by alot (as expressions only need to be reevaluated whenever it changes)
 
-Afterwards
+### Afterwards
 When the syntax is complete and this feature works well the next step is to incorporate it into CMake using C code which will significantly increase the speed. This will make everything much, much faster and might even get rid of those hideous generator expressions.

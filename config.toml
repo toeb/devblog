@@ -29,7 +29,7 @@ paginate = 5000 #frontpage pagination
   slogan = "random thoughts"
   SEOTitle = "Toeb Blog"
   keyword = "thetoeb, toeb, blog, programming"
- 
+  uterances = true
   # Sidebar settings
   sidebar_about_description = "Just a Software Engineer..."
   sidebar_avatar = "images/avatar.png"
