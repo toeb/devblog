@@ -1,15 +1,19 @@
 ---
-title: "A Quick Way of Parsing versioned Web Asset Files"
-date: 2016-08-30T23:24:46+02:00
+title: "Parsing Web Asset Files"
+decription: "A simple Way of Parsing versioned Web Asset Files"
+date: 2013-12-04
+tags: ["C#"]
+categories: ["C#"]
 draft: true
 ---
-A Quick Way of Parsing versioned Web Asset Files
-by thetoeb • 2013/12/04 • 0 Comments
+
 
 To parse versioned web asset filenames ala
 jquery-1.4.min.js
 I wrote a simple class 
 
+
+```C#
 /// <summary>
 /// simple class for describing a file library like 
 /// jquery-1.4.min.js
@@ -114,3 +118,4 @@ public class FileLib
   /// </summary>
   public string Extension { get; set; }
 }
+```

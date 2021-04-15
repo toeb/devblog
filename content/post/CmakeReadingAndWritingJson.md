@@ -1,11 +1,12 @@
 ---
 title: "cmakepp: Reading and Writing JSON"
-date: 2016-08-30T23:24:46+02:00
+decription: "cmakepp: Reading and Writing JSON"
+date: 2014-03-05
+tags: ["cmake", "cmakepp"]
+categories: ["cmake"]
 draft: true
 ---
 
-Reading and Writing JSON with CMake
-by thetoeb • 2014/03/05 • 2 Comments
 
 While working on a package manager for CMake I came across the problem of finding a suitable format for my package descriptor files. First I thought about and tried using plain old CMake file that simply sets variables and can be included to access its contents. It was very quick and easy to implement. Hierarchical data structures however where hard to implement and a none standard format makes it harder to exchange data with a webservice/other programs. So I opted for using JSON as my import/export format. JSON is alot easier to parse than XML and is still ubiquitous in software developement so I cast aside XML (for now).
 
@@ -16,6 +17,8 @@ Note: Because CMake only understands strings the deserializer only accepts strin
 As always: feedback is most welcome if you feel like it you can tell me if you find it usefull, have ideas, or think that I have reinvented the wheel.
 
 Here are some examples for serialization and deserialization:
+
+```cmake
 
 # serialize empty value
 json_serialize(res "")
@@ -155,3 +158,4 @@ assert(${val} STREQUAL "2")
 json_deserialize(res "{ \"key\" : [{\"k1\":\"v1\"}, \"2\"], \"key2\" : \"val2\"}")
 map_navigate(val "res.key[0].k1")
 assert(${val} STREQUAL "v1")
+```

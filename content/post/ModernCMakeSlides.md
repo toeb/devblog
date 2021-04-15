@@ -1,7 +1,10 @@
 ---
 title: "Modern CMake Slides"
-date: 2016-08-30T23:24:46+02:00
+decription: "slides from a C++ user group meeting"
+date: 2016-08-30
 draft: true
+tags: ["cmake"]
+categories: ["cmake"]
 ---
 
 
@@ -11,5 +14,5 @@ I give a small introduction to CMake command line, script mode and then mostly a
 
 I hope you find the slides usefull, please comment on reddit.com if you find mistakes or are missing aspects, suggestions about how I could extend the Talk or anything else. I will try to update the slides and might hold the talk again sometime or make a video.
 
-Link to Presentation https://web.archive.org/web/20170516101122/https://docs.google.com/presentation/d/18fY0zDtJCMUW5WdY2ZOfKtvb7lXEbBPFe_I6MNJC0Qw/edit?usp=sharing
-Github Repository https://web.archive.org/web/20170516101122/https://github.com/toeb/moderncmake
+* Link to Presentation https://web.archive.org/web/20170516101122/https://docs.google.com/presentation/d/18fY0zDtJCMUW5WdY2ZOfKtvb7lXEbBPFe_I6MNJC0Qw/edit?usp=sharing
+* Github Repository https://web.archive.org/web/20170516101122/https://github.com/toeb/moderncmake

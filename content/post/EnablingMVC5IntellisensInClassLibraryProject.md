@@ -1,12 +1,12 @@
 ---
-title: "Modern CMake Slides"
-date: 2016-08-30T23:24:46+02:00
+title: "Enabling MVC5 intellisense in a ClassLibrary Project"
+description: "..."
+date: 2014-01-05
+tags: ["vs2013", "MVC"]
+categories: ["frontend"]
 draft: true
 ---
 
-
-Enabling MVC5 intellisense in a ClassLibrary Project
-by thetoeb • 2014/01/05 • 3 Comments
 
 I’ve been searching and searching the internet for someone, somewhere who might know how to enable correct IntelliSense for cshtml (MVC 5.0) in VS2013 when developing in a ClassLibrary type project.
 
@@ -27,7 +27,7 @@ Clean and Build the solution.
 Open cshtml file
 Voila
 Web.config
-
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <configSections>
@@ -60,6 +60,8 @@ Web.config
     </pages>
   </system.web.webPages.razor>
 </configuration>
+```
+
 One would expect for intellisense for a .cshtml files to work after step 2. However the other steps need to be performed before Intellisense works for  directives like @model or the base page (which contains Model, ViewBag, etc. )
 
 The result looks like it is supposed to:

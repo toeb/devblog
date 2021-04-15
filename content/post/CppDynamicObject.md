@@ -1,41 +1,50 @@
 ---
-title: "An Implementation of the Dynamic Object in C++"
-date: 2016-08-30T23:24:46+02:00
+title: "Dynamic Object in C++"
+decription: "An Implementation of the Dynamic Object in C++"
+date: 2014-10-08
+tags: ["C++","C++10"]
+categories: ["C++"]
 draft: true
 ---
-
-
-An Implementation of the Dynamic Object in C++
-by thetoeb • 2014/10/08 • 2 Comments
 
 You can find my implementation at https://github.com/toeb/cppdynamic it is licensed under the MIT license. I’d be happy for feedback and or optimizations :)
 Dynamic object are useful, especially in rapid prototyping, non-performance critical situations, and situations in which data/functions -bags are needed (non schema specific data). Also when serializing and deserializing dynamic objects can be a very valuable asset.
 
 Dynamic programming languages inherently support this. e.g.
 
+```C++
 var obj = {};
 obj.a = 'asd';
 obj.b = {};
 obj.b.c = 3;
 obj.d = function(i,j){ return i+j;}
+```
+
 C# Also supports dynamic objects utilizing the dynamic keyword:
 
+```C++
 dynamic obj = new ExpandoObject();
 obj.a = "asd";
 obj.b = new ExpandObject();
 obj.b.c = 3;
 obj.d = (int i, int j)=>i+j;
-I tried as to stay close to c#’s dynamic objects when trying to implement them for c++. Of course I could not alter the language so I have to use the indexer operator operator[](const std::string &)
+```
+
+I tried as to stay close to c#’s dynamic objects when trying to implement them for c++. Of course I could not alter the language so I have to use the indexer operator `operator[](const std::string &)`
 
 My syntax is as follows:
 
+```C++
 DynamicObject obj;
 obj["a"] = "asd";
 obj["b"] = DynamicObject();
 obj["b"]["c"] = 3;
 obj["d"] = [](int i, int j){return i+j;};
+```
+
 Here is a working example of what you can do:
 
+```C++
 #include <core.dynamic.h>
 #include <assert.h>
 
@@ -117,8 +126,10 @@ int main(){
 
 
 }
-Caveats:
+```
 
-Functors with multiple overloads of operator() cannot be used as members or values (the is_callable<> and func_traits<> type traits would need to be specialized for the corresonding type.) This is especially sad, because no compiler independent version for std::bind return functors are usable.
+## Caveats:
+
+Functors with multiple overloads of `operator()` cannot be used as members or values (the `is_callable<>` and `func_traits<>` type traits would need to be specialized for the corresonding type.) This is especially sad, because no compiler independent version for `std::bind` return functors are usable.
 Method modifiers except nonconst and const are not implemented.
-Since c++ is statically typed working around it can be hard at times, however it is possible thanks to operator overloading. Especially operator(), operator[], operator T() are usefull to allow dynamic objects.
+Since c++ is statically typed working around it can be hard at times, however it is possible thanks to operator overloading. Especially `operator()`, `operator[]`, `operator T()` are useful to allow dynamic objects.

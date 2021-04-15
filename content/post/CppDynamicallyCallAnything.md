@@ -1,16 +1,18 @@
 ---
-title: "dynamically calling “any” thing in C++"
-date: 2016-08-30T23:24:46+02:00
+title: "dynamically calling `any` thing in C++"
+title: "dynamically calling `any` thing in C++"
+date: 2014-07-15
+tags: ["C++","C++10"]
+categories: ["C++"]
 draft: true
 ---
 
-dynamically calling “any” thing in C++
-by thetoeb • 2014/07/15 • 0 Comments
 
 Extending upon boost’s any class which stores a type and a void ptr to any type of value, I created a callable version were you can assign any function, lambda, memberfunction etc. to the any and call it dynamically. This is a basic and important step for runtime reflection which I’m currently working on. Tell me if you like what I did and if you have any improvements.
 
 You can look at the running example at ideone
 
+```C++
 // example
 #include<assert.h>
 using namespace nspace;
@@ -42,6 +44,5 @@ int main(){
     auto result = uut(std::make_shared<MyType>(3), 2, 1);
     assert(result.as<int>() == 6);
   }
-
-
 }
+```

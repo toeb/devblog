@@ -1,16 +1,16 @@
 ---
-title: "is_callable type trait"
-date: 2016-08-30T23:24:46+02:00
+title: "`is_callable` type trait"
+decription: "is_callable type trait"
+date: 2014-07-12
 draft: true
 ---
 
 
-is_callable type trait
-by thetoeb • 2014/07/12 • 0 Comments
-
-I’ve developed a type_trait for checking if a type is callable, ie has defined a single operator(). Also on ideone
+I’ve developed a `type_trait` for checking if a type is callable, ie has defined a single `operator()`. Also on ideone
 
 Tell me if you like it or if you know of a better version :D
+
+```C++
 /// function traits for member functions 
 // gives you the class_type, return_type and arguments tuple for any member function (const and not const)
   template<typename T>
@@ -67,6 +67,8 @@ int main() {
     // 
     return 0;
 }
+```
+
 Some Sources I queried when developing:
 
 http://stackoverflow.com/questions/5100015/c-metafunction-to-determine-whether-a-type-is-callable
